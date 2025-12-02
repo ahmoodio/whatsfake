@@ -1,0 +1,21 @@
+x Build failed in 5.79s
+error during build:
+src/App.jsx (5:7): "default" is not exported by "src/components/FriendsView.jsx", imported by "src/App.jsx".
+file: /home/ahmoodio/Downloads/app & code/whatsfake/client/src/App.jsx:5:7
+
+3: import Sidebar from './components/Sidebar';
+4: import ChatWindow from './components/ChatWindow';
+5: import FriendsView from './components/FriendsView';
+          ^
+6: import { io } from 'socket.io-client';
+
+    at getRollupError (file:///home/ahmoodio/Downloads/app%20&%20code/whatsfake/client/node_modules/rollup/dist/es/shared/parseAst.js:401:41)
+    at error (file:///home/ahmoodio/Downloads/app%20&%20code/whatsfake/client/node_modules/rollup/dist/es/shared/parseAst.js:397:42)
+    at Module.error (file:///home/ahmoodio/Downloads/app%20&%20code/whatsfake/client/node_modules/rollup/dist/es/shared/node-entry.js:16956:16)
+    at Module.traceVariable (file:///home/ahmoodio/Downloads/app%20&%20code/whatsfake/client/node_modules/rollup/dist/es/shared/node-entry.js:17412:29)
+    at ModuleScope.findVariable (file:///home/ahmoodio/Downloads/app%20&%20code/whatsfake/client/node_modules/rollup/dist/es/shared/node-entry.js:15076:39)
+    at FunctionScope.findVariable (file:///home/ahmoodio/Downloads/app%20&%20code/whatsfake/client/node_modules/rollup/dist/es/shared/node-entry.js:5649:38)
+    at FunctionBodyScope.findVariable (file:///home/ahmoodio/Downloads/app%20&%20code/whatsfake/client/node_modules/rollup/dist/es/shared/node-entry.js:5649:38)
+    at Identifier.bind (file:///home/ahmoodio/Downloads/app%20&%20code/whatsfake/client/node_modules/rollup/dist/es/shared/node-entry.js:5423:40)
+    at CallExpression.bind (file:///home/ahmoodio/Downloads/app%20&%20code/whatsfake/client/node_modules/rollup/dist/es/shared/node-entry.js:2809:28)
+    at CallExpression.bind (file:///home/ahmoodio/Downloads/app%20&%20code/whatsfake/client/node_modules/rollup/dist/es/shared/node-entry.js:12123:15)

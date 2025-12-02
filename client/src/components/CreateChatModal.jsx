@@ -20,7 +20,7 @@ function CreateChatModal({ currentUser, onClose, onChatCreated }) {
         }
 
         try {
-            const res = await fetch('http://localhost:3000/api/users/search', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/users/search`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username: searchQuery })
@@ -40,7 +40,7 @@ function CreateChatModal({ currentUser, onClose, onChatCreated }) {
 
     const startDirectChat = async (otherUser) => {
         try {
-            const res = await fetch('http://localhost:3000/api/chats', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/chats`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -68,7 +68,7 @@ function CreateChatModal({ currentUser, onClose, onChatCreated }) {
         if (!groupName || groupParticipants.length === 0) return;
 
         try {
-            const res = await fetch('http://localhost:3000/api/chats', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/chats`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

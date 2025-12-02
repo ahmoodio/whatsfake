@@ -11,7 +11,7 @@ function ChatWindow({ currentUser, chat }) {
         socket.emit('join_chat', chat.id);
 
         // Fetch history
-        fetch(`http://localhost:3000/api/chats/${chat.id}/messages`)
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/chats/${chat.id}/messages`)
             .then(res => res.json())
             .then(data => setMessages(data))
             .catch(err => console.error(err));
@@ -31,7 +31,7 @@ function ChatWindow({ currentUser, chat }) {
     }, [chat.id]);
 
     const sendMessage = (type, content) => {
-        fetch(`http://localhost:3000/api/chats/${chat.id}/messages`, {
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/chats/${chat.id}/messages`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -46,7 +46,7 @@ function ChatWindow({ currentUser, chat }) {
         const formData = new FormData();
         formData.append('file', file);
 
-        const res = await fetch('http://localhost:3000/api/upload', {
+        const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/upload`, {
             method: 'POST',
             body: formData
         });

@@ -5,7 +5,7 @@ import ChatWindow from './components/ChatWindow';
 import FriendsView from './components/FriendsView';
 import { io } from 'socket.io-client';
 
-export const socket = io('http://localhost:3000');
+export const socket = io(import.meta.env.VITE_API_URL || 'http://localhost:3000');
 
 function App() {
     const [user, setUser] = useState(null);
@@ -25,7 +25,7 @@ function App() {
     const handleStartChat = async (friend) => {
         // Check if chat exists or create new
         try {
-            const res = await fetch('http://localhost:3000/api/chats', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/chats`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

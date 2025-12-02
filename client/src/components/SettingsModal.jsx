@@ -15,7 +15,7 @@ function SettingsModal({ currentUser, onClose, onUpdateUser, onSignOut }) {
         formData.append('file', file);
 
         try {
-            const res = await fetch('http://localhost:3000/api/upload', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/upload`, {
                 method: 'POST',
                 body: formData
             });
@@ -30,7 +30,7 @@ function SettingsModal({ currentUser, onClose, onUpdateUser, onSignOut }) {
 
     const handleSave = async () => {
         try {
-            const res = await fetch(`http://localhost:3000/api/users/${currentUser.id}`, {
+            const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/users/${currentUser.id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ avatar, status, gameActivity })

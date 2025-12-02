@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Search, UserPlus, Check, X, MessageSquare } from 'lucide-react';
+import { Search, UserPlus, Check, X, MessageSquare, Users } from 'lucide-react';
 
 function FriendsView({ currentUser, onStartChat }) {
     const [activeTab, setActiveTab] = useState('online'); // online, all, pending, add
@@ -13,7 +13,7 @@ function FriendsView({ currentUser, onStartChat }) {
     }, [currentUser]);
 
     const fetchFriends = () => {
-        fetch(`http://localhost:3000/api/friends?userId=${currentUser.id}`)
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/friends?userId=${currentUser.id}`)
             .then(res => res.json())
             .then(data => {
                 setFriends(data.friends);
@@ -25,7 +25,7 @@ function FriendsView({ currentUser, onStartChat }) {
     const sendRequest = async () => {
         if (!addUsername.trim()) return;
         try {
-            const res = await fetch('http://localhost:3000/api/friends/request', {
+            const res = await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/friends/request`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ fromUserId: currentUser.id, toUsername: addUsername })
@@ -44,7 +44,7 @@ function FriendsView({ currentUser, onStartChat }) {
 
     const acceptRequest = async (fromUserId) => {
         try {
-            await fetch('http://localhost:3000/api/friends/accept', {
+            await fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/friends/accept`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ userId: currentUser.id, fromUserId })
@@ -159,5 +159,6 @@ function FriendsView({ currentUser, onStartChat }) {
     );
 }
 
-import { Users } from 'lucide-react';
 export default FriendsView;
+
+

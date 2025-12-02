@@ -23,7 +23,7 @@ function ChatList({ currentUser, activeChat, onSelectChat, onUpdateUser, onSignO
     }, [currentUser]);
 
     const fetchChats = () => {
-        fetch(`http://localhost:3000/api/chats?userId=${currentUser.id}`)
+        fetch(`${import.meta.env.VITE_API_URL || 'http://localhost:3000'}/api/chats?userId=${currentUser.id}`)
             .then(res => res.json())
             .then(data => setChats(data))
             .catch(err => console.error(err));
